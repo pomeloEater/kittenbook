@@ -1,11 +1,16 @@
-var projectName = 'kittenbook';
-var versionNumber = '0.0.1';
-var currentDate = new Date();
+var kbValues = {
+	projectName: 'kittenbook',
+	versionNumber: '0.0.1',
+	areaCodes : {
+		'408': 'Silicon Valley',
+		'702': 'Las Vegas',
+		'801': 'Nothern Utah',
+		'765': 'West Lafayette',
+		'901': 'Memphis',
+		'507': 'Rochester, MN'
+	}
+};
 
-// currentTime은 '2014-01-25 at 14:45:12'와 같은 형식을 갖는다.
-var currentTime = currentDate.getFullYear() + '-' + // 년도
-(currentDate.getMonth() + 1) + '-' + // 월
-currentDate.getDate() + ' at ' + // 일
-currentDate.getHours() + ':' + // 시
-currentDate.getMinutes() + ':' + // 분
-currentDate.getSeconds(); // 초
+function getAreaCodes(){
+    return kbValues.areaCodes;
+}
