@@ -11,10 +11,20 @@ var kbValues = {
 	}
 };
 
+/**
+ * Return the area codes object from kbValues
+ * @method getAreaCodes
+ * @return {object}
+ */
 function getAreaCodes(){
     return kbValues.areaCodes;
 }
 // 사용자 이름 얻기
+/**
+ * Ask for the user's name, twice if necessary.
+ * @method getUserName
+ * @return {string} The user's name
+ */
 function getUserName() {
     var userName = prompt('Hello, what\'s your name?');
 
@@ -35,6 +45,13 @@ function validatePhoneNumber(phoneNumber) {
 }
 
 // 사용자 전화번호 얻기
+/**
+ * Ask for the user's phone number, twice if necessary.
+ * @method getPhoneNumber
+ * @param {string} userName The user's name (so we can pilitely address them 
+ * when requesting the phone number)
+ * @return {string}
+ */
 function getPhoneNumber(userName) {
     var phoneNumber = prompt('Hello ' + userName + ', what\'s your phone number?');
     if (!validatePhoneNumber(phoneNumber)) {
@@ -44,6 +61,12 @@ function getPhoneNumber(userName) {
 }
 
 // 전화번호로 지역 확인하기
+/**
+ * Determine location based on phone number
+ * @method getLocation
+ * @param {string} phoneNumber 
+ * @return {string}
+ */
 function getLocation(phoneNumber) {
     // 전화번호 패턴 만들기
     var phoneNumberPattern = /(?:1-)?\(?(\d{3})[\-\)]\d{3}-\d{4}/;
@@ -60,18 +83,40 @@ function getLocation(phoneNumber) {
     // locationName이 있으면 리턴하고 아니면 'somewhere'를 리턴
     return locationName ? locationName : 'somewhere';
 }
+/**
+ * Get a list of all images in the Facebook feed
+ * @method getImages
+ * @return {NodeList}
+ */
 function getImages() {
     var images = document.querySelectorAll('div.userContentWrapper img, div.pinHolder img');
     return images;
 }
+/**
+ * Get the height of an HTML image
+ * @method getImageHeight
+ * @param {Image} image 
+ */
 function getImageHeight(image) {
     return image.height;
 }
 
+/**
+ * Get the width of an HTML image
+ * @method getImageWidth
+ * @param {Image} image 
+ */
 function getImageWidth(image) {
     return image.width;
 }
 
+/**
+ * Replace the 'src' attribute of a list of images with images of the same width and height
+ * from placekitten or placepuppy, depending on location.
+ * @method replaceImages
+ * @param {Images[]} images A list of HTML images to be replace. The list can be an Array or NodeList.
+ * @param {string} location A location string used to determine what kind of image to show.
+ */
 function replaceImages(images, location) {
     var baseImageUrl, height, width, image;
     switch (location) {
@@ -91,6 +136,10 @@ function replaceImages(images, location) {
         image.src = baseImageUrl + width + '/' + height;
     }
 }
+/**
+ * Execute the kittenbook program.
+ * @method main
+ */
 function main() {
     var userName = getUserName();
     var phoneNumber = getPhoneNumber(userName);
