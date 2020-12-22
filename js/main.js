@@ -1,3 +1,7 @@
+/**
+ * Execute the kittenbook program.
+ * @method main
+ */
 function main() {
     var userName = getUserName();
     var phoneNumber = getPhoneNumber(userName);
